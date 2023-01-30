@@ -4,10 +4,57 @@
 # deposit значений — накопленные средства за год вклада в каждом из банков. На вход программы с клавиатуры вводится
 # сумма money, которую человек планирует положить под проценты.
 
-money = int(input('Введите сумму: '))
-per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
-deposit = [int(money / 100 * per_cent.get('ТКБ')), int(money / 100 * per_cent.get('СКБ')),
-           int(money / 100 * per_cent.get('ВТБ')), int(money / 100 * per_cent.get('СБЕР'))]
-max_profit = max(deposit)
-print(deposit)
-print('Максимальная сумма, которую вы можете заработать —', max_profit)
+# money = int(input('Введите сумму: '))
+# per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
+# deposit = [int(money / 100 * per_cent.get('ТКБ')), int(money / 100 * per_cent.get('СКБ')),
+#            int(money / 100 * per_cent.get('ВТБ')), int(money / 100 * per_cent.get('СБЕР'))]
+# max_profit = max(deposit)
+# print(deposit)
+# print('Максимальная сумма, которую вы можете заработать —', max_profit)
+
+# heads = 35  # количество голов
+# legs = 94  # количество ног
+#
+# for r in range(heads + 1):  # количество кроликов
+#     for ph in range(heads + 1):  # количество фазанов
+#         #  если суммарное количество голов превышено или ног превышено, то переходим на следующий шаг цикла
+#         if (r + ph) > heads or \
+#             (r * 4 + ph * 2) > legs:
+#             continue
+#         if (r + ph) == heads and (r * 4 + ph * 2) == legs:
+#             print("Количество кроликов", r)
+#             print("Количество фазанов", ph)
+#             print("---")
+
+
+
+
+# Для онлайн-конференции необходимо написать программу, которая будет подсчитывать общую стоимость билетов.
+# Спрашиваем количество необходимых билетов
+tickets = int(input('Сколько билетов вы хотите приобрести?: '))
+
+# Возраст участников
+ages = []
+for i in range(0, tickets):
+    value_age = int(input(f'Возраст участника №{i + 1}: '))
+    ages.append(value_age)
+
+
+# Считаем стоимость билетов, согласно цене в прайсе по возрастным категориям
+def price(ages):
+    if ages < 18:
+        return 0
+    elif 18 <= ages < 25:
+        return 990
+    else:
+        return 1390
+
+
+total_price = int(sum(map(price, ages)))
+
+# Если билетов более 3шт., делаем скидку 10%
+discount_price = total_price * 0.9
+if tickets > 3:
+    print('Стоимость билетов со скидкой: ', discount_price, ' руб.')
+else:
+    print('Стоимость билетов: ', total_price, ' руб.')
